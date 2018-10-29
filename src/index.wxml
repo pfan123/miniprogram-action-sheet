@@ -1,0 +1,19 @@
+<!-- 自定义的 ActionSheet 组件 -->
+<view class="action-sheet">
+    <view
+        class="popup__mask action-sheet__mask {{ isShowLayer ? 'popup__mask--show' : '' }} {{ showAnim ? 'popup__mask--anim' : '' }}"
+        catchtap="closeLayer"
+        catchtouchmove="noscroll"
+    ></view>
+    <view class="popup__main action-sheet__wrap {{ isShowLayer ? 'show' : '' }}">
+        <view class="action-sheet__body">
+            <view wx:if="{{ title }}" class="action-sheet__title line2">{{ title }}</view>
+            <block wx:for="{{ listData }}" wx:key="*this">
+                <view class="action-sheet__list-item line1" data-idx="{{ index }}" catchtap="handleItemClick">{{ item }}</view>
+            </block>
+        </view>
+        <view class="action-sheet__footer">
+            <view class="action-sheet__btn" catchtap="closeLayer">取消</view>
+        </view>
+    </view>
+</view>
